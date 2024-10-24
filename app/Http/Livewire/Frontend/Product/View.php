@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $category,$product,$productColorSelectedQuantity,$quantityCount=1,$productColorId;
+    public $sub_category,$product,$productColorSelectedQuantity,$quantityCount=1,$productColorId;
     public function addToWishList($productId)
     {
         // dd($productId);
@@ -213,15 +213,16 @@ class View extends Component
         }
     }
     
-    public function mount($category,$product)
+    public function mount($sub_category,$product)
     {
-        $this->category=$category;
+        $this->sub_category=$sub_category;
         $this->product=$product;
     }
+    
     public function render()
     {
         return view('livewire.frontend.product.view',[
-            'category'=>$this->category,
+            'sub_category'=>$this->sub_category,
             'product'=>$this->product,
         ]);
     }

@@ -38,7 +38,7 @@
                         </h4>
                         <hr>
                         <p class="product-path">
-                            Home /{{ $product->category->name }}/{{ $product->name }}
+                            Home /{{ $product->sub_category->name }}/{{ $product->name }}
                         </p>
                         <p class="product-path">Brand::{{ $product->brand }}</p>
                         <div>
@@ -121,23 +121,23 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <h3>Related
-                        @if ($category)
-                        {{ $category->name }}
+                        @if ($sub_category)
+                        {{ $sub_category->name }}
                         @endif
                         Products</h3>
                     <div class="underline"></div>
                 </div>
                 <div class="col-md-12">
-                    @if ($category)
+                    @if ($sub_category)
                     <div class="owl-carousel owl-theme four-carousel">
-                        @foreach ($category->relatedProducts as $relatedProductItem)
+                        @foreach ($sub_category->relatedProducts as $relatedProductItem)
                         <div class="item mb-3">
                             <div class="product-card">
                                 <div class="product-card-img">
                                     {{-- <label class="stock bg-danger">New</label> --}}
                                     @if ($relatedProductItem->productImages->count()>0)
                                     <a
-                                        href="{{ url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug) }}">
+                                        href="{{ url('/collections/'.$relatedProductItem->sub_category->slug.'/'.$relatedProductItem->slug) }}">
                                         <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
                                             alt="{{ $relatedProductItem->name }}"></a>
                                     @endif
@@ -146,7 +146,7 @@
                                     <p class="product-brand">{{ $relatedProductItem->brand }}</p>
                                     <h5 class="product-name">
                                         <a
-                                            href="{{ url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug) }}">
+                                            href="{{ url('/collections/'.$relatedProductItem->sub_category->slug.'/'.$relatedProductItem->slug) }}">
                                             {{ $relatedProductItem->name }}
                                         </a>
                                     </h5>
@@ -181,9 +181,9 @@
                     <div class="underline"></div>
                 </div>
                 <div class="col-md-12">
-                    @if ($category)
+                    @if ($sub_category)
                     <div class="owl-carousel owl-theme four-carousel">
-                        @foreach ($category->relatedProducts as $relatedProductItem)
+                        @foreach ($sub_category->relatedProducts as $relatedProductItem)
                         @if ($relatedProductItem->brand == "$product->brand")
                         <div class="item mb-3">
                             <div class="product-card">
@@ -191,7 +191,7 @@
                                     {{-- <label class="stock bg-danger">New</label> --}}
                                     @if ($relatedProductItem->productImages->count()>0)
                                     <a
-                                        href="{{ url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug) }}">
+                                        href="{{ url('/collections/'.$relatedProductItem->sub_category->slug.'/'.$relatedProductItem->slug) }}">
                                         <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
                                             alt="{{ $relatedProductItem->name }}"></a>
                                     @endif
@@ -200,7 +200,7 @@
                                     <p class="product-brand">{{ $relatedProductItem->brand }}</p>
                                     <h5 class="product-name">
                                         <a
-                                            href="{{ url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug) }}">
+                                            href="{{ url('/collections/'.$relatedProductItem->sub_category->slug.'/'.$relatedProductItem->slug) }}">
                                             {{ $relatedProductItem->name }}
                                         </a>
                                     </h5>

@@ -20,15 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function(){
-   Route::get('/','index');
-   Route::get('/collections','categories');
-   Route::get('/collections/{category_slug}','products');
-   Route::get('/collections/{category_slug}/{product_slug}','productView');
-   Route::get('/new-arrivals','newArrival');
-   Route::get('/featured-products','featuredProducts');
-   Route::get('search','searchProducts');
-
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function() {
+   Route::get('/', 'index');
+   Route::get('/collections', 'categories');
+   Route::get('/collections/{category_slug}', 'products');
+   Route::get('/collections/{category_slug}/{subcategory_slug}', 'subCategoryProducts');
+   Route::get('/collections/{category_slug}/{subcategory_slug}/{product_slug}', 'productView');
+   Route::get('/new-arrivals', 'newArrival');
+   Route::get('/featured-products', 'featuredProducts');
+   Route::get('search', 'searchProducts');
 });
 
 Route::middleware(['auth'])->group(function(){
@@ -70,7 +70,18 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('/category','store');
     Route::get('/category/{category}/edit','edit');
     Route::put('/category/{category}','update');
+    Route::get('/categories/{id}/subcategories','showSubcategories');
+
    });
+
+   //SubCategory Routes
+   Route::controller(App\Http\Controllers\Admin\SubCategoryController::class)->group(function(){
+      Route::get('/sub_category','index');
+      Route::get('/sub_category/create','create');
+      Route::post('/sub_category','store');
+      Route::get('/sub_category/{sub_category}/edit','edit');
+      Route::put('/sub_category/{sub_category}','update');
+     });
 
    //Product Routes
    Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function(){

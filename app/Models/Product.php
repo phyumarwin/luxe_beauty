@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
     protected $table='products';
     protected $fillable=[
-        'category_id',
+        'sub_category_id',
         'name',
         'slug',
         'brand',
@@ -29,9 +29,9 @@ class Product extends Model
         'meta_description',
 
     ];
-    public function category()
+    public function sub_category()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(SubCategory::class,'sub_category_id','id');
     }
     public function productImages()
     {

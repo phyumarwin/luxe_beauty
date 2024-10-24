@@ -9,10 +9,10 @@ class Brand extends Model
 {
     use HasFactory;
     protected $table='brands';
-    protected $fillable=['name','slug','status','category_id'];
+    protected $fillable=['name','slug','status','sub_category_id'];
 
-    public function category()
+    public function sub_category()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(SubCategory::class,'sub_category_id','id');
     }
 }

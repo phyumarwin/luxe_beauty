@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Slider;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
@@ -40,19 +41,36 @@ class FrontendController extends Controller
     }
     public function categories()
     {
-        $categories=Category::where('status',0)->get();
+        $categories=Category::all();
         return view('frontend.collections.category.index',compact('categories'));
     }
-    public function products($category_slug)
+    public function products($subcategory_slug)
     {
-        $category=Category::where('slug',$category_slug)->first();
-        if($category){
+        $sub_category = SubCategory::where('slug', $subcategory_slug)->first();
+        if($sub_category){
             // $products=$category->products()->get();
-            return view('frontend.collections.products.index',compact('category'));
+            return view('frontend.collections.products.index',compact('sub_category'));
         }else{
             return redirect()->back();
         }
     }
+
+    public function subcategoryProducts($category_slug, $subcategory_slug)
+    {
+        $category = Category::where('slug', $category_slug)->first();
+        if ($category) {
+            $subcategory = SubCategory::where('slug', $subcategory_slug)->where('category_id', $category->id)->first();
+            if ($subcategory) {
+                $products = Product::where('sub_category_id', $subcategory->id)->where('status', '0')->latest()->paginate(15);
+                return view('frontend.collections.subcategory.index', compact('subcategory', 'products', 'category'));
+            } else {
+                return redirect()->back()->with('message', 'Subcategory not found');
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+    
     public function productView(string $category_slug,string $product_slug)
     {
         $category=Category::where('slug',$category_slug)->first();

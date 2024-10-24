@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Color;
 use Illuminate\Support\Str;
 use App\Models\ProductImage;
@@ -13,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ProductFormRequest;
 use App\Models\ProductColor;
+use App\Models\SubCategory;
 
 class ProductController extends Controller
 {
@@ -23,18 +23,18 @@ class ProductController extends Controller
     }
     public function create()
     {
-        $categories=Category::all();
+        $sub_categories=SubCategory::all();
         $brands=Brand::all();
         $colors=Color::where('status','0')->get();
-        return view('admin.products.create',compact('categories','brands','colors'));
+        return view('admin.products.create',compact('sub_categories','brands','colors'));
     }
     public function store(ProductFormRequest $request){
         $validatedDate=$request->validated();
 
-        $category=Category::findOrFail($validatedDate['category_id']);
+        $sub_category=SubCategory::findOrFail($validatedDate['sub_category_id']);
         
-        $product=$category->products()->create([
-            'category_id'=>$validatedDate['category_id'],
+        $product=$sub_category->products()->create([
+            'sub_category_id'=>$validatedDate['sub_category_id'],
             'name'=>$validatedDate['name'],
             'slug'=>Str::slug($validatedDate['slug']),
             'brand'=>$validatedDate['brand'],
@@ -80,23 +80,23 @@ class ProductController extends Controller
     }
     public function edit(int $product_id)
     {
-        $categories=Category::all();
+        $sub_categories=SubCategory::all();
         $brands=Brand::all();
         $product=Product::findOrFail($product_id);
         $product_color=$product->productColors->pluck('color_id')->toArray();
         // dd($product_color);
         $colors=Color::whereNotIn('id',$product_color)->get();
         // dd($colors);
-        return view('admin.products.edit',compact('categories','brands','product','colors'));
+        return view('admin.products.edit',compact('sub_categories','brands','product','colors'));
     }
     public function update(ProductFormRequest $request,int $product_id)
     {
         $validatedDate=$request->validated();
-        $product=Category::findOrFail($validatedDate['category_id'])
+        $product=SubCategory::findOrFail($validatedDate['sub_category_id'])
                 ->products()->where('id',$product_id)->first();
         if($product){
             $product->update([
-            'category_id'=>$validatedDate['category_id'],
+            'sub_category_id'=>$validatedDate['sub_category_id'],
             'name'=>$validatedDate['name'],
             'slug'=>Str::slug($validatedDate['slug']),
             'brand'=>$validatedDate['brand'],

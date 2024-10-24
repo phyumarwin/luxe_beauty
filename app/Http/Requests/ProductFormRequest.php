@@ -24,7 +24,7 @@ class ProductFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id'=>[
+            'sub_category_id'=>[
                 'required','integer'
             ],
             'name'=>[

@@ -79,4 +79,13 @@ class CategoryController extends Controller
         $category->update();
         return redirect('admin/category')->with('message','Category Updated Successfully');
     }
+
+    public function showSubcategories($id)
+    {
+        $category = Category::findOrFail($id);
+        $subcategories = $category->subcategories;
+
+        return view('admin.subcategory.index', compact('subcategories', 'category'));
+    }
+
 }

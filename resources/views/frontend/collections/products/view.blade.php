@@ -13,6 +13,6 @@
 
 @section('content')
 <div>
-    <livewire:frontend.product.view :category="$category" :product="$product"/>
+    <livewire:frontend.product.view :sub_category="$sub_category" :product="$product"/>
 </div>
 @endsection

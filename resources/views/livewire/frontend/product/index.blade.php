@@ -1,13 +1,13 @@
 <div>
     <div class="row">
         <div class="col-md-3">
-            @if ($category->brands)
+            @if ($sub_category->brands)
             <div class="card">
                 <div class="card-header">
                     <h4>Brands</h4>
                 </div>
                 <div class="card-body">
-                    @foreach ($category->brands as $brandItem)
+                    @foreach ($sub_category->brands as $brandItem)
                     <label for="" class="d-block">
                         <input type="checkbox" wire:model="brandInputs" value="{{ $brandItem->name }}"> {{ $brandItem->name }}
                     </label>
@@ -42,14 +42,14 @@
                                 <label class="stock bg-danger">Out of Stock</label>
                             @endif
                             @if ($productItem->productImages->count()>0)
-                            <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
+                            <a href="{{ url('/collections/'.$productItem->sub_category->slug.'/'.$productItem->slug) }}">
                                 <img src="{{ asset($productItem->productImages[0]->image) }}" alt="{{ $productItem->name }}"></a>
                             @endif
                         </div>
                         <div class="product-card-body">
                             <p class="product-brand">{{ $productItem->brand }}</p>
                             <h5 class="product-name">
-                               <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
+                               <a href="{{ url('/collections/'.$productItem->sub_category->slug.'/'.$productItem->slug) }}">
                                     {{ $productItem->name }}
                                </a>
                             </h5>
@@ -63,7 +63,7 @@
         @empty
             <div class="col-md-12">
                 <div class="p-2">
-                    <h4>No Product Available for {{ $category->name }}</h4>
+                    <h4>No Product Available for {{ $sub_category->name }}</h4>
                 </div>
                 </div>
         @endforelse

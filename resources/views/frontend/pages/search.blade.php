@@ -19,7 +19,7 @@
                             <div class="product-card-img">
                                 <label class="stock bg-danger">New</label>
                                     @if ($productItem->productImages->count() > 0)
-                                        <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
+                                        <a href="{{url('/collections/'.$productItem->sub_category->slug.'/'.$productItem->slug)}}">
                                             <img src="{{asset($productItem->productImages[0]->image)}}" alt="{{$productItem->name}}">
                                         </a>
                                     @endif 
@@ -29,7 +29,7 @@
                                 <div class="product-card-body">
                                 <p class="product-brand">{{$productItem->brand}}</p>
                                 <h5 class="product-name">
-                                <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
+                                <a href="{{url('/collections/'.$productItem->sub_category->slug.'/'.$productItem->slug)}}">
                                         {{$productItem->name}} 
                                 </a>
                                 </h5>
@@ -40,7 +40,7 @@
                                 <p style="height: 45px;overflow:hidden">
                                     <b>Description :</b>{{ $productItem->description }}
                                 </p> 
-                            <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}" class="btn btn-outline-primary">View</a>                  
+                            <a href="{{url('/collections/'.$productItem->sub_category->slug.'/'.$productItem->slug)}}" class="btn btn-outline-primary">View</a>                  
                         </div>
                     </div>
                 </div>

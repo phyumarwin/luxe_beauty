@@ -25,6 +25,19 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item {{ Request::is('admin/sub_category*') ? 'active':'' }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#sub_category" aria-expanded="{{ Request::is('admin/sub_category*') ? 'true':'false' }}" aria-controls="sub_category">
+              <i class="mdi mdi-view-list menu-icon"></i>
+              <span class="menu-title">SubCategory</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Request::is('admin/sub_category*') ? 'show':'' }}" id="sub_category">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/sub_category/create') ? 'active':'' }}" href="{{ url('admin/sub_category/create') }}">Add SubCategory</a></li>
+                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/sub_category') ||Request::is('admin/sub_category/*/edit')  ? 'active':'' }}" href="{{ url('admin/sub_category') }}">View SbuCategory</a></li>
+              </ul>
+            </div>
+          </li>
           <li class="nav-item {{ Request::is('admin/products*') ? 'active':'' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="{{ Request::is('admin/products*') ? 'true':'false' }}" aria-controls="products">
               <i class="mdi mdi-plus-circle menu-icon"></i>
