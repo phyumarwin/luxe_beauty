@@ -13,7 +13,7 @@
                     <div class="category-card">
                         <a href="{{ url('/collections/'.$categoryItem->slug) }}">
                             <div class="category-card-img">
-                            <img src="{{ asset("$categoryItem->image") }}" class="w-100" alt="Laptop">
+                            <img src="{{ asset("$categoryItem->image") }}" class="w-100" alt="{{ $categoryItem->name }}">
                             </div>
                             <div class="category-card-body">
                                 <h5>{{ $categoryItem->name }}</h5>

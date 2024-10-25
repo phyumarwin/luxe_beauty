@@ -55,17 +55,12 @@ class FrontendController extends Controller
         }
     }
 
-    public function subcategoryProducts($category_slug, $subcategory_slug)
+    public function subcategoryProducts($category_slug)
     {
         $category = Category::where('slug', $category_slug)->first();
         if ($category) {
-            $subcategory = SubCategory::where('slug', $subcategory_slug)->where('category_id', $category->id)->first();
-            if ($subcategory) {
-                $products = Product::where('sub_category_id', $subcategory->id)->where('status', '0')->latest()->paginate(15);
-                return view('frontend.collections.subcategory.index', compact('subcategory', 'products', 'category'));
-            } else {
-                return redirect()->back()->with('message', 'Subcategory not found');
-            }
+            $subcategories = SubCategory::where('category_id', $category->id)->get();
+            return view('frontend.collections.subcategory.index', compact('category', 'subcategories'));
         } else {
             return redirect()->back();
         }

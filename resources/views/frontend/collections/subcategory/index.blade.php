@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','All Categories')
+@section('title','All SubCategories')
 @section('content')
 <div class="py-3 py-md-5 bg-light">
     <div class="container">
@@ -8,10 +8,10 @@
                 <h4 class="mb-4">Our SubCategories</h4>
             </div>
 
-            @forelse ($sub_categories as $subcategoryItem)
+            @forelse ($subcategories as $subcategoryItem)
                 <div class="col-6 col-md-3">
                     <div class="subcategory-card">
-                        <a href="{{ url('/collections/'.$category_slug.'/'.$subcategoryItem->slug) }}">
+                        <a href="{{ url('/collections/'.$category->slug) }}">
                             <div class="category-card-img">
                                 <img src="{{ asset($subcategoryItem->image) }}" class="w-100" alt="{{ $subcategoryItem->name }}">
                             </div>
