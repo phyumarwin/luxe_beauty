@@ -48,8 +48,8 @@ class FrontendController extends Controller
     {
         $sub_category = SubCategory::where('slug', $subcategory_slug)->first();
         if($sub_category){
-            // $products=$category->products()->get();
-            return view('frontend.collections.products.index',compact('sub_category'));
+            $subcategories = SubCategory::where('category_id', $sub_category->id)->get();            
+            return view('frontend.collections.products.index',compact('subcategories'));
         }else{
             return redirect()->back();
         }
