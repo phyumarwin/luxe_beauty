@@ -37,8 +37,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Category</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -47,7 +45,6 @@
                         <tr>
                             <td>{{ $sub_category->id }}</td>
                             <td>{{ $sub_category->name }}</td>
-                            <td>{{ $sub_category->status=='1' ?'Hidden':'Visible' }}</td>
                             <td>
                                 <a href="{{url('admin/sub_category/'.$sub_category->id.'/edit')  }}" class="btn btn-success">Edit</a>
                                 <a href="#" wire:click="deleteSubCategory({{ $sub_category->id }})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">Delete</a>

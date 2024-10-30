@@ -44,14 +44,15 @@ class FrontendController extends Controller
         $categories=Category::all();
         return view('frontend.collections.category.index',compact('categories'));
     }
-    public function products($subcategory_slug)
+    public function products($category_slug,$subcategory_slug)
     {
         $sub_category = SubCategory::where('slug', $subcategory_slug)->first();
         if($sub_category){
-            $subcategories = SubCategory::where('category_id', $sub_category->id)->get();            
-            return view('frontend.collections.products.index',compact('subcategories'));
+            $products = Product::where('sub_category_id', $sub_category->id)->get();
+            $category = Category::find($sub_category->category_id);
+            return view('frontend.collections.products.index', compact('sub_category', 'products', 'category'));
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Subcategory not found');
         }
     }
 
