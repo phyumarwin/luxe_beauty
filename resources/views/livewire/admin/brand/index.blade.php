@@ -13,7 +13,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Category</th>
+                                <th>Subcategory</th>
                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -25,10 +25,10 @@
                                 <td>{{ $brand->id }}</td>
                                 <td>{{ $brand->name }}</td>
                                 <td>
-                                    @if ($brand->category)
-                                        {{ $brand->category->name }}
+                                    @if ($brand->sub_category)
+                                        {{ $brand->sub_category->name }}
                                     @else
-                                        No Category
+                                        No SubCategory
                                     @endif
                                     
                                 </td>

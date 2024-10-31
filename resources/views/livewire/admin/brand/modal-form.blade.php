@@ -9,15 +9,15 @@
       <form wire:submit.prevent="storeBrand">
       <div class="modal-body">
         <div class="mb-3">
-          <label for="">Select Category</label>
-          <select wire:model.defer="category_id" class="form-control" id="">
-            <option value="">--Select Category--</option>
-            @foreach ($categories as $cateItem)
+          <label for="">Select SubCategory</label>
+          <select wire:model.defer="sub_category_id" class="form-control" id="">
+            <option value="">--Select SubCategory--</option>
+            @foreach ($sub_categories as $cateItem)
               <option value="{{ $cateItem->id }}">{{ $cateItem->name }}</option>
             @endforeach
             
           </select>
-          @error('category_id')
+          @error('sub_category_id')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
@@ -69,15 +69,15 @@
       <form wire:submit.prevent="updateBrand">
       <div class="modal-body">
         <div class="mb-3">
-          <label for="">Select Category</label>
-          <select wire:model.defer="category_id" class="form-control" id="">
-            <option value="">--Select Category--</option>
-            @foreach ($categories as $cateItem)
+          <label for="">Select SubCategory</label>
+          <select wire:model.defer="sub_category_id" class="form-control" id="">
+            <option value="">--Select SubCategory--</option>
+            @foreach ($sub_categories as $cateItem)
               <option value="{{ $cateItem->id }}">{{ $cateItem->name }}</option>
             @endforeach
             
           </select>
-          @error('category_id')
+          @error('sub_category_id')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>

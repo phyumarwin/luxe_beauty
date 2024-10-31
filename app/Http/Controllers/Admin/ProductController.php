@@ -30,7 +30,6 @@ class ProductController extends Controller
     }
     public function store(ProductFormRequest $request){
         $validatedDate=$request->validated();
-
         $sub_category=SubCategory::findOrFail($validatedDate['sub_category_id']);
         
         $product=$sub_category->products()->create([

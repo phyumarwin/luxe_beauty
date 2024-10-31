@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Category</th>
+                            <th>SubCategory</th>
                             <th>Product</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -30,10 +30,10 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>
-                                @if ($product->category)
-                                    {{ $product->category->name }}
+                                @if ($product->sub_category)
+                                    {{ $product->sub_category->name }}
                                 @else
-                                    No Category
+                                    No SubCategory
                                 @endif
                                 
                             </td>

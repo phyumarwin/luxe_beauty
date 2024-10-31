@@ -1,5 +1,5 @@
 <div>
-        <div class="footer-area" style="background-color: hsl(331.38deg 94.06% 32.83%)">
+        <div class="footer-area" style="background-color: #E75480">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">

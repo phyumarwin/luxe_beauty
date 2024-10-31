@@ -45,11 +45,11 @@
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 <div class="mb-3">
-                    <label for="">Select Category</label>
-                    <select name="category_id" class="form-control">
-                        <option value="">Select Category</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"{{ $category->id==$product->category_id ? 'selected':'' }}>{{ $category->name }}</option>
+                    <label for="">Select SubCategory</label>
+                    <select name="sub_category_id" class="form-control">
+                        <option value="">Select SubCategory</option>
+                        @foreach ($sub_categories as $sub_category)
+                            <option value="{{ $sub_category->id }}"{{ $sub_category->id==$product->sub_category_id ? 'selected':'' }}>{{ $sub_category->name }}</option>
                         @endforeach
                     </select>
                 </div>

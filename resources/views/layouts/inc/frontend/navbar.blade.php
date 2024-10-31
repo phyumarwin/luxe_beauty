@@ -1,5 +1,5 @@
 <div class="main-navbar shadow-sm sticky-top">
-        <div class="top-navbar" style="background-color: hsl(331.38deg 94.06% 32.83%)">
+        <div class="top-navbar" style="background-color: #E75480">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">

@@ -41,13 +41,14 @@
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 <div class="mb-3">
-                    <label for="">Category</label>
-                    <select name="category_id" class="form-control">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <label for="">SubCategory</label>
+                    <select name="sub_category_id" class="form-control">
+                        @foreach ($sub_categories as $sub_category)
+                            <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
                         @endforeach
                     </select>
                 </div>
+                    
                 <div class="mb-3">
                     <label for="">Product Name</label>
                     <input type="text" name="name" class="form-control">
